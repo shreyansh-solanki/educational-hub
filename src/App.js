@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import PublicRoute from './components/PublicRoute';
 import { ProfileProvider } from './context/profile.context';
 
+import './styles/main.scss';
+
 function App() {
   return (
     <ProfileProvider>

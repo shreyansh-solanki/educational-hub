@@ -15,7 +15,7 @@ const isOnlineForDatabase = {
 const ProfileContext = createContext();
 
 export const ProfileProvider = ({ children }) => {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -26,10 +26,11 @@ export const ProfileProvider = ({ children }) => {
         userStatusRef = database.ref(`/status/${authObj.uid}`);
         userRef = database.ref(`/profiles/${authObj.uid}`);
         userRef.on('value', snap => {
-          const { name, createdAt } = snap.val();
+          const { name, createdAt, avatar } = snap.val();
           const data = {
             name,
             createdAt,
+            avatar,
             uid: authObj.uid,
             email: authObj.email,
           };
