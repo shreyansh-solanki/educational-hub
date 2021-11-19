@@ -1,0 +1,23 @@
+/* div {
+  display: flex;
+} */
+
+.searchGroup1 {
+  visibility: hidden;
+}
+
+/* .accountStateBtn {
+  display: none;
+} */
+
+@media (min-width: 850px) {
+  .searchGroup1 {
+    visibility: visible;
+  }
+}
+
+@media (max-width: 490px) {
+  .searchGroup1 {
+    display: none;
+  }
+}
