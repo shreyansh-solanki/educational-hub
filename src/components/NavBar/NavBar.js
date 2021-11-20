@@ -1,7 +1,6 @@
 import { faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Switch } from 'react-router';
 import {
   Dropdown,
   FlexboxGrid,
@@ -16,6 +15,7 @@ import { ProfileProvider, useProfile } from '../../context/profile.context';
 
 import '../../styles/NavBar.Style.css';
 import ProfileAvatar from '../ProfileManage/ProfileAvatar';
+import Dashboard from './Dashboard';
 
 const inputStyles = {
   width: 300,
@@ -46,7 +46,9 @@ const NavBar = () => {
 
   return (
     <Navbar>
-      <Nav style={inputText}>{/* <Dashboard /> */}</Nav>
+      <Nav style={inputText}>
+        <Dashboard />
+      </Nav>
       <Navbar.Brand href="#">Educational Hub</Navbar.Brand>
 
       <FlexboxGrid justify="center" className="searchGroup1">
