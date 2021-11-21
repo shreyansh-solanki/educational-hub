@@ -1,6 +1,6 @@
 import { faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Dropdown,
   FlexboxGrid,
@@ -15,6 +15,7 @@ import { ProfileProvider, useProfile } from '../../context/profile.context';
 
 import '../../styles/NavBar.Style.css';
 import ProfileAvatar from '../ProfileManage/ProfileAvatar';
+import SearchBar from '../SearchBar';
 import Dashboard from './Dashboard';
 
 const inputStyles = {
@@ -30,6 +31,16 @@ const accountStateBtn = {
 };
 
 const NavBar = () => {
+  const [input, setInput] = useState('');
+
+  const onInptChange = ev => {
+    setInput(ev);
+  };
+
+  const onSearch = () => {
+    console.log('search');
+  };
+
   const { profile } = useProfile();
 
   const accountIconButton = (props, ref) => {
@@ -55,8 +66,19 @@ const NavBar = () => {
         <Nav>
           <Nav style={inputText}>
             <InputGroup inside>
-              <Input size="md" style={inputStyles} placeholder="Search" />
-              <InputGroup.Button>
+              {/* <InputGroup.Button> */}
+              {/* </InputGroup.Button> */}
+              <SearchBar>
+                {/* <input type="text" onChange={onInptChange} /> */}
+                <Input
+                  onChange={onInptChange}
+                  value={input}
+                  size="md"
+                  style={inputStyles}
+                  placeholder="Search"
+                />
+              </SearchBar>
+              <InputGroup.Button onClick={onSearch} style={{ marginLeft: 260 }}>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Button>
             </InputGroup>

@@ -1,13 +1,11 @@
-import React from 'react';
-import Categories from '../components/Categories';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar/NavBar';
-import RecentVideo from '../components/Cards/RecentVideo';
 
 const Home = () => {
   return (
     <>
       <NavBar />
-      <RecentVideo />
+
       {/* <Categories /> */}
     </>
   );
