@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import DarkModeToggle from 'react-dark-mode-toggle';
 import { Input, InputGroup, Nav } from 'rsuite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +8,6 @@ import { apiGet } from '../context/config';
 import NavBar from '../components/NavBar/NavBar';
 import Search from '../components/SearchResult/Search';
 import '../styles/NavBar.Style.css';
-import Main from '../components/MainPage/Main';
 import { useProfile } from '../context/profile.context';
 import MainGrid from '../components/MainPage/MainGrid';
 
@@ -91,6 +91,7 @@ const randomResults = [
 const Home = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(() => false);
   const { profile, isLoading } = useProfile();
 
   const onSearch = () => {
@@ -109,8 +110,6 @@ const Home = () => {
     }
   };
 
-  const apiContain = {};
-  // for (let i = 0; i < 5; i++) {
   const rnE = randomResults[Math.floor(Math.random() * randomResults.length)];
   const rnE1 = randomResults[Math.floor(Math.random() * randomResults.length)];
   const rnE2 = randomResults[Math.floor(Math.random() * randomResults.length)];
@@ -131,22 +130,8 @@ const Home = () => {
       `/videos?part=snippet&id=${rnE}&id=${rnE1}&id=${rnE2}&id=${rnE3}&id=${rnE4}&id=${rnE5}&id=${rnE6}&id=${rnE7}&id=${rnE8}&id=${rnE9}&id=${rnE10}&id=${rnE11}&id=${rnE12}&id=${rnE13}&id=${rnE14}&`
     ).then(result => {
       setResults(result);
-      console.log(result);
     });
   }
-  // apiGet(`/videos?part=snippet&id=${randomElement}&`).then(
-  //   result => {
-  //    apiContains = setResults(result);
-  //   }
-  //   );
-  console.log(apiContain);
-  // } else {
-  //   apiContain[randomElement]++;
-  // }
-  // }
-  // apiGet(`/videos?part=snippet&id=${randomElement}&`).then(result => {
-  //   setResults(result);
-  // });
 
   const renderResults = () => {
     if (results && input.length === 0) {
@@ -158,7 +143,6 @@ const Home = () => {
     }
     return null;
   };
-  console.log(results);
 
   return (
     <>
@@ -176,11 +160,20 @@ const Home = () => {
             <FontAwesomeIcon icon={faSearch} />
           </InputGroup.Button>
         </InputGroup>
-        <button id="dsa-search" type="button">
+        <button
+          id="dsa-search"
+          type="button"
+          style={{ background: '#f1f1f1', color: 'black' }}
+        >
           <FontAwesomeIcon icon={faMicrophone} />
         </button>
       </div>
       {/* <Main /> */}
+      {/* <DarkModeToggle
+          onChange={setIsDarkMode}
+          checked={isDarkMode}
+          size={50}
+        /> */}
       <div style={{ display: 'inline-flex', flexWrap: 'wrap', marginTop: 30 }}>
         {renderResults()}
       </div>

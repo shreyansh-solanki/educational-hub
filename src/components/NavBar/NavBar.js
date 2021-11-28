@@ -27,49 +27,6 @@ const inputText = {
 };
 
 const NavBar = () => {
-  // const [input, setInput] = useState('');
-
-  // const onInptChange = ev => {
-  //   setInput(ev);
-  // };
-
-  // const [results, setResults] = useState(null);
-
-  // const onSearch = () => {
-  //   fetch(
-  //     `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=AIzaSyAf6CJMn8jqyYLDojB7cZyK41y-qE0fsDI`
-  //   )
-  //     .then(r => r.json())
-  //     .then(result => {
-  //       setResults(result);
-  //       console.log(result.items[0].snippet.channelTitle);
-  //     });
-  // };
-
-  // const renderResults = () => {
-  //   if (results && results.length === 0) {
-  //     return <div>No results</div>;
-  //   }
-  //   if (results && results.length > 0) {
-  //     return (
-  //       <div>
-  //         {results.map(item => (
-  //           <div key={item.items[0].id.videoId}>
-  //             {item.items[0].snippet.channelTitle}
-  //           </div>
-  //         ))}
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
-
-  // const onKeyDown = ev => {
-  //   if (ev.keyCode === 13) {
-  //     onSearch();
-  //   }
-  // };
-
   const { profile } = useProfile();
 
   const accountIconButton = (props, ref) => {
@@ -85,11 +42,13 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar>
+    <Navbar style={{ background: '#333' }}>
       <Nav style={inputText}>
         <Dashboard />
       </Nav>
-      <Navbar.Brand href="#">Educational Hub</Navbar.Brand>
+      <Navbar.Brand href="#" style={{ color: '#fff' }}>
+        Educational Hub
+      </Navbar.Brand>
       <Nav pullRight>
         <ProfileProvider>
           <Dropdown renderToggle={accountIconButton} placement="leftStart">

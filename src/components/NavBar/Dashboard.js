@@ -18,6 +18,7 @@ const Dashboard = () => {
     <div>
       <ButtonToolbar>
         <IconButton
+          style={{ backgroundColor: '#333', color: '#fff' }}
           icon={<FontAwesomeIcon icon={faBars} />}
           onClick={() => handleOpen('left')}
         />
@@ -35,7 +36,7 @@ const Dashboard = () => {
             <Button onClick={() => setOpen(false)}>Confirm</Button> */}
           </Drawer.Actions>
         </Drawer.Header>
-        <Drawer.Body>
+        <Drawer.Body style={{ color: '#333' }}>
           <div className="dash">
             <button type="button">Home</button>
           </div>

@@ -5,7 +5,7 @@ import '../../styles/MainCard.Style.css';
 
 const MainCard = ({ id, name, publishedAt, image, title }) => {
   const textTitle = title
-    ? `${title.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, '')}...`
+    ? `${title.split(' ').slice(0, 9).join(' ').replace(/<.+?>/g, '')}...`
     : 'No description';
   return (
     <div className="container">
