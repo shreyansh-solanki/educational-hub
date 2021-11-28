@@ -1,0 +1,30 @@
+.main-card {
+  display: flex;
+  width: 250px;
+  height: 250px;
+}
+
+.main-content {
+  border: 1px solid rgba(128, 128, 128, 0);
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  box-shadow: 1px 0 3px 0px rgba(153, 153, 153, 0.527);
+}
+
+@media (min-width: 1100px) {
+  .main-card {
+    width: 280px;
+  }
+}
+
+@media (max-width: 580px) {
+  .main-card {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+  .main-content {
+    height: fit-content;
+  }
+}

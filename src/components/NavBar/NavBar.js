@@ -26,10 +26,6 @@ const inputText = {
   marginTop: 10,
 };
 
-const accountStateBtn = {
-  marginTop: -57,
-};
-
 const NavBar = () => {
   // const [input, setInput] = useState('');
 
@@ -37,7 +33,7 @@ const NavBar = () => {
   //   setInput(ev);
   // };
 
-  const [results, setResults] = useState(null);
+  // const [results, setResults] = useState(null);
 
   // const onSearch = () => {
   //   fetch(
@@ -94,14 +90,7 @@ const NavBar = () => {
         <Dashboard />
       </Nav>
       <Navbar.Brand href="#">Educational Hub</Navbar.Brand>
-
-      <FlexboxGrid justify="center" className="searchGroup1">
-        <Nav>
-          <SearchContent />
-        </Nav>
-      </FlexboxGrid>
-
-      <Nav pullRight style={accountStateBtn} className="accountStateBtn1">
+      <Nav pullRight>
         <ProfileProvider>
           <Dropdown renderToggle={accountIconButton} placement="leftStart">
             {/* <Dropdown.Item> */}
@@ -112,6 +101,12 @@ const NavBar = () => {
           </Dropdown>
         </ProfileProvider>
       </Nav>
+      {/* </Nav> */}
+      {/* <FlexboxGrid justify="center" className="searchGroup1">
+        <Nav>
+          <SearchContent />
+        </Nav>
+      </FlexboxGrid> */}
     </Navbar>
   );
 };

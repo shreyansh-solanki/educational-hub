@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, ButtonToolbar, Drawer, IconButton } from 'rsuite';
 import { useModalState } from '../../misc/custom-hooks';
+import '../../styles/Dashboard.Style.css';
 
 const Dashboard = () => {
   const [size, setSize] = React.useState('xs');
@@ -34,7 +35,25 @@ const Dashboard = () => {
             <Button onClick={() => setOpen(false)}>Confirm</Button> */}
           </Drawer.Actions>
         </Drawer.Header>
-        <Drawer.Body>fadsfaff</Drawer.Body>
+        <Drawer.Body>
+          <div className="dash">
+            <button type="button">Home</button>
+          </div>
+          <div className="dash">
+            <button type="button">Recently Watched</button>
+          </div>
+          <div className="dash">
+            <button type="button">Liked Video</button>
+          </div>
+          <div className="dash sign">
+            <button type="button" className="sign">
+              SignOut
+            </button>
+          </div>
+        </Drawer.Body>
+        {/* <Drawer.Body>Recently Watched</Drawer.Body>
+        <Drawer.Body>Liked Video</Drawer.Body>
+        <Drawer.Body>SignOut</Drawer.Body> */}
       </Drawer>
     </div>
   );

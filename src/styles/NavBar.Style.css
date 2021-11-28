@@ -1,23 +1,14 @@
-/* div {
+.searchbar-style {
   display: flex;
-} */
-
-.searchGroup1 {
-  visibility: hidden;
+  margin-top: -45px;
+  justify-content: center;
+  height: 37px !important;
+  /* position: fixed; */
+  padding: 0;
 }
-
-/* .accountStateBtn {
-  display: none;
-} */
-
-@media (min-width: 850px) {
-  .searchGroup1 {
-    visibility: visible;
-  }
-}
-
-@media (max-width: 490px) {
-  .searchGroup1 {
-    display: none;
-  }
+#dsa-search {
+  width: 25px;
+  height: 37px;
+  border-radius: 5px;
+  background-color: rgb(224, 224, 224);
 }
