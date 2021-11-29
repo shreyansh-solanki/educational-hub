@@ -10,6 +10,7 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import PrivateRoute from './components/PrivateRoute';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
+import VideoPlayer from './pages/VideoPlayer';
 import PublicRoute from './components/PublicRoute';
 import { ProfileProvider } from './context/profile.context';
 
@@ -33,6 +34,9 @@ function App() {
             <PublicRoute path="/signin">
               <SignIn />
             </PublicRoute>
+            <PrivateRoute path="/videos">
+              <VideoPlayer />
+            </PrivateRoute>
             <PrivateRoute path="/">
               <Home />
             </PrivateRoute>

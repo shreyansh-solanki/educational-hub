@@ -1,22 +1,11 @@
+/* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
 
-import { Input, InputGroup, Nav } from 'rsuite';
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from 'react-speech-recognition';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrophone, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { apiGet } from '../context/config';
-import NavBar from '../components/NavBar/NavBar';
-import Search from '../components/SearchResult/Search';
-import '../styles/NavBar.Style.css';
-import { useProfile } from '../context/profile.context';
 import MainGrid from '../components/MainPage/MainGrid';
+import { apiGet } from '../context/config';
+import { useProfile } from '../context/profile.context';
 
-const inputStyles = {
-  width: 300,
-  height: 37,
-};
+import '../styles/VideoPlayer.css';
 
 const randomResults = [
   'N89PN_uyelU',
@@ -90,26 +79,11 @@ const randomResults = [
   '1z1S_VnGYF0',
   'KpG5FGgNUJo',
 ];
-const Home = () => {
+
+const VideoPlayer = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState(null);
   const { profile, isLoading } = useProfile();
-
-  const onSearch = () => {
-    apiGet(`/search?part=snippet&maxResults=5&q=${input}&`).then(result => {
-      setResults(result);
-    });
-  };
-
-  const onInptChange = ev => {
-    setInput(ev);
-  };
-
-  const onKeyDown = ev => {
-    if (ev.keyCode === 13) {
-      onSearch();
-    }
-  };
 
   const rnE = randomResults[Math.floor(Math.random() * randomResults.length)];
   const rnE1 = randomResults[Math.floor(Math.random() * randomResults.length)];
@@ -126,6 +100,7 @@ const Home = () => {
   const rnE12 = randomResults[Math.floor(Math.random() * randomResults.length)];
   const rnE13 = randomResults[Math.floor(Math.random() * randomResults.length)];
   const rnE14 = randomResults[Math.floor(Math.random() * randomResults.length)];
+
   if (isLoading) {
     apiGet(
       `/videos?part=snippet&id=${rnE}&id=${rnE1}&id=${rnE2}&id=${rnE3}&id=${rnE4}&id=${rnE5}&id=${rnE6}&id=${rnE7}&id=${rnE8}&id=${rnE9}&id=${rnE10}&id=${rnE11}&id=${rnE12}&id=${rnE13}&id=${rnE14}&`
@@ -139,60 +114,20 @@ const Home = () => {
       return <MainGrid data={results} />;
       // return <div>No results</div>;
     }
-    if (results && input.length > 0) {
-      return <Search data={results.items} />;
-    }
     return null;
   };
-
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-
-  const { transcript } = useSpeechRecognition();
-  console.log(transcript);
   return (
-    <>
-      <NavBar />
-      <div className="searchbar-style">
-        <InputGroup inside style={inputStyles}>
-          <Input
-            onChange={onInptChange}
-            onKeyDown={onKeyDown}
-            value={input}
-            size="md"
-            placeholder="Search"
-          />
-          <InputGroup.Button onClick={onSearch} style={{ marginLeft: 260 }}>
-            <FontAwesomeIcon icon={faSearch} />
-          </InputGroup.Button>
-        </InputGroup>
-        <button
-          id="dsa-search"
-          type="button"
-          style={{ background: '#f1f1f1', color: 'black' }}
-          onClick={SpeechRecognition.startListening}
-          onDoubleClick={SpeechRecognition.stopListening}
-        >
-          <FontAwesomeIcon icon={faMicrophone} />
-        </button>
+    <div className="video-container">
+      <div className="player-part">
+        <iframe
+          src="https://www.youtube.com/embed/hCrO_cR7kno"
+          title="video"
+          width="auto"
+        />
       </div>
-      {/* <Main /> */}
-
-      <div style={{ display: 'inline-flex', flexWrap: 'wrap', marginTop: 30 }}>
-        {renderResults()}
-      </div>
-    </>
+      <div className="list-part">{renderResults}</div>
+    </div>
   );
 };
 
-export default Home;
+export default VideoPlayer;

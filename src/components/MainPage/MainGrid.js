@@ -10,7 +10,7 @@ const MainGrid = ({ data }) => {
       {data.items.map(item => (
         <MainCard
           key={item.snippet.channelId}
-          id={item.id.videoId}
+          id={item.id}
           name={item.snippet.channelTitle}
           publishedAt={item.snippet.publishedAt}
           image={

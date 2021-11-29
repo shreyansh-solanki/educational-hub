@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
-import { Col, Panel, Row } from 'rsuite';
+import VideoPlayer from '../../pages/VideoPlayer';
 import '../../styles/MainCard.Style.css';
 
 const MainCard = ({ id, name, publishedAt, image, title }) => {
@@ -11,7 +12,7 @@ const MainCard = ({ id, name, publishedAt, image, title }) => {
     <div className="container">
       <div className="main-card">
         <div className="main-content">
-          <Link to={`/videos?part=id%2Csnippet&id=${id}&key=/`}>
+          <Link to={`/videos/${id}`}>
             <img src={image} alt="" />
             <div className="card-title">{textTitle}</div>
           </Link>
